@@ -1,10 +1,10 @@
 from flask import Flask , redirect , render_template, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager , UserMixin , login_required ,login_user, logout_user,current_user
+from flask_login import LoginManager , UserMixin , login_required ,login_user, logout_user
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.db'
-app.config['SECRET_KEY']='619619'
+app.config['SECRET_KEY']='abemad'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
 db = SQLAlchemy(app)
 
