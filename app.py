@@ -1,12 +1,20 @@
 from flask import Flask , redirect , render_template, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager , UserMixin , login_required ,login_user, logout_user
+from werkzeug.utils import secure_filename
+
 
 app=Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///db.db'
 app.config['SECRET_KEY']='abemad'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS']=True
+
+app.config["UPLOAD_FOLDER"] = "EncryptComm/static/pictures"
+
 db = SQLAlchemy(app)
+
+
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -61,6 +69,17 @@ def signup_post():
 def logout():
     logout_user()
     return redirect('/login')
+
+@app.route('/upload')
+def upload_file():
+   return render_template('login.html')
+	
+@app.route('/uploader', methods = ['GET', 'POST'])
+def upload_file2():
+   if request.method == 'POST':
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
+      return 'file uploaded successfully'
 
 
 if __name__=='__main__':
