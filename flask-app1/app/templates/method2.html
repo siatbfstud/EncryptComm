@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html lang-"eng">
+{% extends "appbuilder/base.html" %}
+
+{% block content %}
     <head>
         <meta charset="utf-8" name="viewport" content="width-device-width, initial-scale-1" />
         <link rel="stylesheet"
@@ -7,18 +8,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <span class="icon-bar">
-                        <a href="http://0.0.0.0:5000">
-                            <img src="/static/img/demo-logo1_850x467.png"
-                                 width="85" height="47" title="FAB Demo">
-                        </a>
-                    </span>
-                </div>
-            </div>
-        </nav>
 
         <main class="container">
             <div class="md-margin-top">
@@ -59,4 +48,4 @@
             </div>
         </main>
     </body>
-</html>
+    {% endblock %}
