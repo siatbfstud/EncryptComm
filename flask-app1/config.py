@@ -21,7 +21,7 @@ CSRF_ENABLED = True
 APP_NAME = "Encrypt Comm"
 
 # Uncomment to setup Setup an App icon
-# APP_ICON = "static/img/logo.jpg"
+# APP_ICON = "static/img/logo.png"
 
 
 AUTH_TYPE = AUTH_DB

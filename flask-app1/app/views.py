@@ -63,7 +63,7 @@ class DemoView(BaseView):
     def page2(self, message):
         '''API with parameter + customized view'''
         message = f'message #2: {message}'
-        return render_template('method1.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
+        return render_template('method2.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
 
     @expose('/method3/')
     @has_access
@@ -123,9 +123,9 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
 
+appbuilder.add_view_no_menu(ProjectFilesModelView)
 
 db.create_all()
 appbuilder.add_view(
     ProjectModelView, "List Projects", icon="fa-table", category="Projects"
 )
-appbuilder.add_view_no_menu(ProjectFilesModelView)
