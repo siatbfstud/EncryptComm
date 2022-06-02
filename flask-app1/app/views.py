@@ -2,8 +2,6 @@ from flask import render_template
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from flask_appbuilder import ModelView, CompactCRUDMixin
 from app.models import Project, ProjectFiles
-from . import appbuilder, db
-from flask import render_template
 from flask_appbuilder import BaseView, expose, has_access
 from . import appbuilder, db
 
@@ -75,9 +73,8 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
 
-
-db.create_all()
 appbuilder.add_view(
-    ProjectModelView, "List Projects", icon="fa-table", category="Projects"
-)
+    ProjectModelView, "List Projects", icon="fa-table", category="Projects")
+
 appbuilder.add_view_no_menu(ProjectFilesModelView)
+db.create_all()
