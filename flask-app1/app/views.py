@@ -18,7 +18,7 @@ class DemoView(BaseView):
     @has_access
     def page2(self, message):
         message = f'message #2: {message}'
-        return render_template('method1.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
+        return render_template('method2.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
 
     @expose('/method3/')
     @has_access
