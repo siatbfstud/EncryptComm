@@ -14,6 +14,12 @@ SQLALCHEMY_DATABASE_URI = "sqlite:///" + os.path.join(basedir, "app.db")
 # Flask-WTF flag for CSRF
 CSRF_ENABLED = True
 
+
+FILE_ENCRYPTOR_CHUNK_SIZE = 64 * 1024
+FILE_ENCRYPTOR_TMP_DIR    = basedir + "/app/static/tmp/"
+FILE_ENCRYPTOR_DATA_DIR   = basedir + "/app/static/uploads/"
+FILE_ENCRYPTOR_GLOBAL_KEY = 'aAa8KxQx4Eoxwu41HTaaq'
+
 # ------------------------------
 # GLOBALS FOR APP Builder
 # ------------------------------

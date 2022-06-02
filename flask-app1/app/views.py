@@ -6,32 +6,13 @@ from flask_appbuilder import BaseView, expose, has_access
 from . import appbuilder, db
 
 class DemoView(BaseView):
-    default_view = "method1"
-
     @expose('/method1/')
     @has_access
     def page1(self):
         return render_template('method1.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
 
-    @expose('/method2/')
-    @has_access
-    def page2(self):
-        return render_template('method2.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
-
-    @expose('/method3/')
-    @has_access
-    def page3(self):
-        return render_template('method3.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
-
-appbuilder.add_view(DemoView(), "Teamet",
-                    category='Kontakt', category_icon='fa-envelope',
+appbuilder.add_view(DemoView, "Teamet", icon='fa-people-group', category='Kontakt', category_icon='fa-envelope',
                     href="/demoview/method1/")
-
-appbuilder.add_link("Message2", category='Kontakt',
-                    href="/demoview/method2/")
-
-appbuilder.add_link("Message3", category='Kontakt',
-                    href="/demoview/method3/")
 
 @appbuilder.app.errorhandler(404)
 def page_not_found(e):
@@ -69,7 +50,7 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
 
-appbuilder.add_view(ProjectModelView, "Projekt filer", icon="fa-table", category="Filer")
+appbuilder.add_view(ProjectModelView, "Projekt filer", icon="fa-file-arrow-down", category_icon="fa-file", category="Filer")
 
 appbuilder.add_view_no_menu(ProjectFilesModelView)
 db.create_all()
