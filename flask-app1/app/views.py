@@ -11,30 +11,26 @@ class DemoView(BaseView):
     @expose('/method1/')
     @has_access
     def page1(self):
-        message = 'message #1: Method1'
-        return render_template('method1.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
+        return render_template('method1.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
 
-    @expose('/method2/<message>')
+    @expose('/method2/')
     @has_access
-    def page2(self, message):
-        message = f'message #2: {message}'
-        return render_template('method2.html', message=message, base_template=appbuilder.base_template, appbuilder=appbuilder)
+    def page2(self):
+        return render_template('method2.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
 
     @expose('/method3/')
     @has_access
     def page3(self):
-        message = 'message #3: Method3'
-        return render_template('method3.html', message=message,
-                               base_template=appbuilder.base_template, appbuilder=appbuilder)
+        return render_template('method3.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
 
-appbuilder.add_view(DemoView(), "Message1",
-                    category='Demo View', category_icon='fa-envelope',
+appbuilder.add_view(DemoView(), "Teamet",
+                    category='Kontakt', category_icon='fa-envelope',
                     href="/demoview/method1/")
 
-appbuilder.add_link("Message2", category='Demo View',
-                    href="/demoview/method2/FAB_Demo_view")
+appbuilder.add_link("Message2", category='Kontakt',
+                    href="/demoview/method2/")
 
-appbuilder.add_link("Message3", category='Demo View',
+appbuilder.add_link("Message3", category='Kontakt',
                     href="/demoview/method3/")
 
 @appbuilder.app.errorhandler(404)
@@ -73,8 +69,7 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
 
-appbuilder.add_view(
-    ProjectModelView, "List Projects", icon="fa-table", category="Projects")
+appbuilder.add_view(ProjectModelView, "Projekt filer", icon="fa-table", category="Filer")
 
 appbuilder.add_view_no_menu(ProjectFilesModelView)
 db.create_all()
