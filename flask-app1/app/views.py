@@ -11,8 +11,8 @@ class DemoView(BaseView):
     def page1(self):
         return render_template('method1.html', base_template=appbuilder.base_template, appbuilder=appbuilder)
 
-appbuilder.add_view(DemoView, "Teamet", icon='fa-people-group', category='Kontakt', category_icon='fa-envelope',
-                    href="/demoview/method1/")
+appbuilder.add_view(DemoView, "Teamet", 
+    category='Kontakt', category_icon='fa-envelope', href="/demoview/method1/")
 
 @appbuilder.app.errorhandler(404)
 def page_not_found(e):
@@ -50,7 +50,8 @@ class ProjectModelView(CompactCRUDMixin, ModelView):
         ),
     ]
 
-appbuilder.add_view(ProjectModelView, "Projekt filer", icon="fa-file-arrow-down", category_icon="fa-file", category="Filer")
+appbuilder.add_view(ProjectModelView, "Projekt filer", category_icon="fa-file", category="Filer")
 
 appbuilder.add_view_no_menu(ProjectFilesModelView)
+
 db.create_all()
